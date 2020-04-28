@@ -8,6 +8,16 @@ canvas {
     height: 100vh;
 }
 
+.bg-container {
+    background-image: url("../img/Cooroot\ -\ Facemelter.jpg");
+    background-size: 100%;
+    filter: blur(5px);
+    width: 105%;
+    height: 105vh;
+    position: fixed;
+    z-index: -1;
+}
+
 #track {
     position: absolute;
 }
