@@ -1,14 +1,3 @@
-var ctx = new AudioContext();
-var audio = document.querySelector("#track");
-var audioSrc = ctx.createMediaElementSource(audio);
-var analyser = ctx.createAnalyser();
-
-var bgContainer = document.querySelector('.bg-container');
-
-audioSrc.connect(analyser);
-audioSrc.connect(ctx.destination);
-var fqData = new Uint8Array(analyser.frequencyBinCount);
-
 var mouseX = 0, mouseY = 0;
 var windowHalfX = window.innerWidth / 2;
 var windowHalfY = window.innerHeight / 2;
@@ -88,13 +77,6 @@ function render() {
         camera.position.z + 5
     );   
 
-    for (let fq = 0; fq < 256; fq++) {
-        spotlight.intensity = fqData[fq] * 0.01;
-        cube.position.x = fqData[fq] * 0.02;
-        bgContainer.style.filter = "blur(" + fqData[fq] * 0.03 + "px)";
-
-    }
-
     camera.position.z -= (mouseY - camera.position.y) * 0.001;
     boxGroup.rotation.y += (mouseY - boxGroup.rotation.y) * 0.001 / 1000;
     boxGroup.rotation.x += (mouseX - boxGroup.rotation.x) * 0.001 / 1000;
@@ -115,10 +97,6 @@ function onWindowResize() {
     camera.updateProjectionMatrix();
     renderer.setSize(window.innerWidth, window.innerHeight);
 }
-
-window.addEventListener('mousemove', (e) => {
-    bgContainer.style.transform = `translate(-${e.clientX * 0.04 - 1}px, -${e.clientY * 0.04 - 1}px)`;
-});
 
 document.addEventListener('mousemove', onMouseMove, false);
 
