@@ -69,8 +69,6 @@ function render() {
 
     renderer.render(scene, camera);    
 
-    analyser.getByteFrequencyData(fqData);
-
     spotlight.position.set(
         camera.position.x + 5,
         camera.position.y + 5,
