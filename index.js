@@ -62,6 +62,7 @@ for (let i = 0; i < 1000; i++) {
 
     cube.rotation.x = Math.random() * Math.PI * 2;
     cube.rotation.y = Math.random() * Math.PI * 2;
+    cube.add(light);
 
     boxGroup.add(cube);
     cubes.push(cube);
